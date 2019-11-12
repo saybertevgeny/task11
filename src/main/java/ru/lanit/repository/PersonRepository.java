@@ -17,17 +17,11 @@ public class PersonRepository {
     @PersistenceContext
     protected EntityManager em;
 
-    public List<Person> getList(boolean useRelations) {
+    public List<Person> getList() {
         CriteriaQuery<Person> criteriaQuery = em.getCriteriaBuilder().createQuery(Person.class);
         Root<Person> rootEntry = criteriaQuery.from(Person.class);
-        if (useRelations)
-            rootEntry.fetch("addresses", JoinType.LEFT);
         criteriaQuery.select(rootEntry);
         return em.createQuery(criteriaQuery).getResultList();
-    }
-
-    public List<Person> getList() {
-        return getList(true);
     }
 
     public Person getById(int id) throws NotFoundEntityException {

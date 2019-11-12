@@ -1,5 +1,6 @@
 package ru.lanit.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.lanit.dto.RequestAddressDto;
@@ -18,6 +19,7 @@ public class AddressService {
     private RequestAddressDtoValidator validator;
     private AddressRepository addressRepository;
 
+    @Autowired
     public AddressService(PersonRepository personRepository,
                           RequestAddressDtoValidator validator,
                           AddressRepository addressRepository) {

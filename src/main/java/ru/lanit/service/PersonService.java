@@ -52,7 +52,7 @@ public class PersonService {
     @Transactional(readOnly = true)
     public List<PersonDto> getList() {
         List<PersonDto> result = new ArrayList<>();
-        List<Person> personList = personRepository.getList(false);
+        List<Person> personList = personRepository.getList();
         for (Person person : personList) {
             PersonDto personDto = this.personMapper.map(person);
             List<Address> addressList = person.getAddresses();
